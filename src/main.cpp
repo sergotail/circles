@@ -29,12 +29,14 @@ int main(int argc, char * argv[])
         size_t arg = args[0].toUInt(&ok);
         if (!ok) {
             std::cout
-                    << "Number of circles specified wrong (must be integer >= 0 and <= 500), default value will be used instead"
+                    << "Number of circles specified wrong (must be integer >= 0), default value will be used instead"
                     << std::endl;
         }
         else if (arg > CircleUtils::max_nballs) {
             std::cout
-                    << "Number of circles scannot be grater than 500? set to "
+                    << "Number of circles scannot be grater than " 
+    		    << CircleUtils::max_nballs
+		    << ", set to "
                     << CircleUtils::max_nballs
                     << std::endl;
             N = CircleUtils::max_nballs;

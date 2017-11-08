@@ -70,15 +70,25 @@ void InteractingCircleScene::stop() {
 void InteractingCircleScene::updateAnimation() {
     ic_vector currentState = backend->circlesVector(); // cache current backend state
     auto currentView = items();
-    uint64_t startTime = calcStartTime.load();
-    // compute time remaining to next calculation iteration and extrapolate lineary items positions
-    double calcTimeRemaining = std::max(0.0,
+    if (CircleUtils::use_extrapolation) {
+        uint64_t startTime = calcStartTime.load();
+        // compute time remaining to next calculation iteration and extrapolate lineary items positions
+        double calcTimeRemaining = std::max(0.0,
                                calcTime - (std::chrono::duration_cast<ms>(Time::now().time_since_epoch()).count() - startTime));
-    double alpha = 1.0 - calcTimeRemaining / calcTime; // extrapolation coeff
-    for (size_t i = 0; i < currentState.size(); ++i) {
-        if (currentState[i].isInteracting()) {
-            static_cast<GraphicsCircleItem *>(currentView[i])->setPos(currentState[i].x() + alpha * currentState[i].dx(),
+        double alpha = 1.0 - calcTimeRemaining / calcTime; // extrapolation coeff
+
+        for (size_t i = 0; i < currentState.size(); ++i) {
+            if (currentState[i].isInteracting()) {
+                static_cast<GraphicsCircleItem *>(currentView[i])->setPos(currentState[i].x() + alpha * currentState[i].dx(),
                                                                       currentState[i].y() + alpha * currentState[i].dy());
+            }
+        }
+    }
+    else {
+        for (size_t i = 0; i < currentState.size(); ++i) {
+            if (currentState[i].isInteracting()) {
+                static_cast<GraphicsCircleItem *>(currentView[i])->setPos(currentState[i].x(), currentState[i].y());
+            }
         }
     }
 }

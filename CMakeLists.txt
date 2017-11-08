@@ -10,7 +10,13 @@ set(CMAKE_BUILD_TYPE RELEASE)
 set(CMAKE_CXX_FLAGS "-Wall -Wextra")
 set(CMAKE_CXX_FLAGS_RELEASE "-O3")
 
-#set(CMAKE_PREFIX_PATH /opt/Qt/5.9.2/gcc_64)
+set(CMAKE_THREAD_PREFER_PTHREAD)
+set(CMAKE_THREAD_LIBS_INIT "-lpthread")
+set(CMAKE_HAVE_THREADS_LIBRARY 1)
+set(CMAKE_USE_WIN32_THREADS_INIT 0)
+set(CMAKE_USE_PTHREADS_INIT 1)
+
+#set(CMAKE_PREFIX_PATH /opt/Qt5.9.2/5.9.2/gcc_64)
 
 # Use native optimizations
 include(CheckCXXCompilerFlag)

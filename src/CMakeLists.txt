@@ -8,4 +8,4 @@ qt5_wrap_cpp(interactingcirclescene_SRC ${HDR_ROOT}/interactingcirclescene.h)
 
 add_executable(${PROJECT_NAME} ${SOURCE_FILES} ${SOURCE_MAIN} ${interactingcirclescene_SRC} ${widget_SRC})
 
-target_link_libraries(${PROJECT_NAME} Qt5::Widgets)
+target_link_libraries(${PROJECT_NAME} Qt5::Widgets ${CMAKE_THREAD_LIBS_INIT})

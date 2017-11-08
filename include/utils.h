@@ -7,9 +7,10 @@ public:
     static constexpr double max_scale = 100.0;
     static constexpr double min_speed = 0.0;
     static constexpr double max_speed = 1.0;
-    static constexpr int max_nballs = 500;
-    static constexpr int calcTime = 40;
+    static constexpr int max_nballs = 1000;
+    static constexpr int calcTime = 30;
     static constexpr int renderTime = 10;
+    static constexpr bool use_extrapolation = false;
     static constexpr double default_radius = 5.0;
     static constexpr double distEps = 0.9;
     CircleUtils() = delete;
