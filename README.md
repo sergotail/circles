@@ -1,9 +1,8 @@
 Circles
 =========
 Testing assignment for DSSL
+
 Uses Qt5 and GoogleTest
-Minimum CMake required: 3.1.0
-Minimum GCC version: GNU 4.8.5
 
 Requirements
 ------------
@@ -15,9 +14,9 @@ Qt 5.9.2 used in development, other versions had not been tested
 
 Build & Install
 ---------------
-'''bash
+```bash
 export CMAKE_PREFIX_PATH="path/to/qt5"
-'''
+```
 
 (e.g. export CMAKE_PREFIX_PATH="/opt/Qt/5.9.2/gcc_64") 
 
@@ -36,5 +35,5 @@ Max N is 500, default N is 50
 
 Run tests
 ---------
-From build dir, run ./test/test_cicles
+From build dir, run ./test/test_circles
 
